@@ -22,17 +22,22 @@ public class ClientMandelbrotSet extends Client<Integer[][]>
 
 
 
+    //Test Data
+
     private static final double LOWER_LEFT_X = -2.0;
     private static final double LOWER_LEFT_Y = -2.0;
     private static final double EDGE_LENGTH = 4.0;
     private static final int N_PIXELS = 256;
     private static final int ITERATION_LIMIT = 64;
     
+
+
+
+
     public ClientMandelbrotSet() throws RemoteException, NotBoundException, MalformedURLException 
     { 
         super( "Mandelbrot Set Visualizer", "localhost",
-               new TaskMandelbrotSet( LOWER_LEFT_X, LOWER_LEFT_Y, EDGE_LENGTH, N_PIXELS, 
-                                                       ITERATION_LIMIT) ); 
+               new TaskMandelbrotSet( LOWER_LEFT_X, LOWER_LEFT_Y, EDGE_LENGTH, N_PIXELS, ITERATION_LIMIT) ); 
     }
     
     /**

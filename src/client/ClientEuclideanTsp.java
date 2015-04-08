@@ -1,4 +1,5 @@
 package client;
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -19,6 +20,9 @@ import tasks.TaskEuclideanTsp;
  */
 public class ClientEuclideanTsp extends Client<List<Integer>>
 {
+
+    //Test Data
+
     private static final int NUM_PIXALS = 600;
     private static final double[][] CITIES = 
     {
@@ -54,8 +58,22 @@ public class ClientEuclideanTsp extends Client<List<Integer>>
         System.setSecurityManager( new SecurityManager() );
         final ClientEuclideanTsp client = new ClientEuclideanTsp();
         client.begin();
-        final List<Integer> value = client.runTask();
-        client.add( client.getLabel( value.toArray( new Integer[0] ) ) );
+
+
+        final List<Integer> result = client.runTask();
+        if(result != null){
+
+
+
+
+
+
+            // final List<Integer> value = client.runTask();
+            
+
+            // client.add( client.getLabel( value.toArray( new Integer[0] ) ) );
+
+        }
         client.end();
     }
     
