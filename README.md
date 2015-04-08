@@ -10,7 +10,7 @@ Status
 
 From copying the tutorial I was able to get the sample Pi task working.
 
- > cd src
+ > cd src  
  window 1> rmiregistry
   
  window 2> java -Djava.security.policy=policy.txt computer.ComputerImpl  
