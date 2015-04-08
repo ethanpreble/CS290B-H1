@@ -13,5 +13,5 @@ Status:
  > cd src  
  window 1> rmiregistry  
  window 2> java -Djava.security.policy=policy.txt computer.ComputerImpl  
- window 3> java -Djava.security.policy=policy.txt client.ClientMandelbrotSet  
+ window 3> java -Djava.security.policy=policy.txt client.ClientMandelbrotSet localhost 
  (10 is the number of decimal places for Pi)  

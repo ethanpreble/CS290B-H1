@@ -45,9 +45,9 @@ public class ClientEuclideanTsp extends Client<List<Integer>>
      * @throws NotBoundException     [description]
      * @throws MalformedURLException [description]
      */
-    public ClientEuclideanTsp() throws RemoteException, NotBoundException, MalformedURLException
+    public ClientEuclideanTsp(String hostname) throws RemoteException, NotBoundException, MalformedURLException
     { 
-        super( "Euclidean TSP", "localhost", new TaskEuclideanTsp( CITIES ) ); 
+        super( "Euclidean TSP", hostname, new TaskEuclideanTsp( CITIES ) ); 
     }
 
 
@@ -56,7 +56,7 @@ public class ClientEuclideanTsp extends Client<List<Integer>>
     public static void main( String[] args ) throws Exception
     {
         System.setSecurityManager( new SecurityManager() );
-        final ClientEuclideanTsp client = new ClientEuclideanTsp();
+        final ClientEuclideanTsp client = new ClientEuclideanTsp(args[0]);  //pass hostnmae
         client.begin();
 
 
