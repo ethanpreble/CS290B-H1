@@ -49,6 +49,14 @@ public class TaskMandelbrotSet implements Task<Integer[][]>, Serializable
 			_real=real;
 			_imaginary=imaginary;
 		}
+		
+		public void square()
+		{
+			double prevReal = _real;
+			double prevImaginary = _imaginary;
+			_real = Math.pow(prevReal,2)-Math.pow(prevImaginary,2);
+			_imaginary = 2*prevReal*prevImaginary;
+		}
 	}
 
 
@@ -59,14 +67,19 @@ public class TaskMandelbrotSet implements Task<Integer[][]>, Serializable
 		Integer[][] result = new Integer[_n_pixels][_n_pixels];
 		for(int i=0; i<_n_pixels; i++){
 			for(int j=0; j<_n_pixels; j++){
+				
 				//z0 = c; ie zk=c when k=0
 				double offset_x = i*(_edge_length/_n_pixels);
 				double offset_y = j*(_edge_length/_n_pixels);
-				Complex zk = new Complex(_lower_left_x + offset_x, _lower_left_y + offset_y);
+				Complex c = new Complex(_lower_left_x + offset_x, _lower_left_y + offset_y);
+				Complex zk = new Complex(_lower_left_x + offset_x, _lower_left_y + offset_y); //didn't want to deal with deep copy stuff but this is same a 'c'
+				
 				int iterations=0;
-				while((iterations < _iteration_limit) && (distance(zk._real,zk._imaginary) <2))
+				while(	(iterations <= _iteration_limit) && (distance(zk._real,zk._imaginary) <2)	)
 				{
 					//find new zk
+					 
+					iterations++;
 				}
 				result[i][j] = iterations;
 			}
