@@ -1,4 +1,5 @@
 package client;
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -16,6 +17,11 @@ import tasks.TaskMandelbrotSet;
  */
 public class ClientMandelbrotSet extends Client<Integer[][]>
 {
+
+    private static final long serialVersionUID = 233L;
+
+
+
     private static final double LOWER_LEFT_X = -2.0;
     private static final double LOWER_LEFT_Y = -2.0;
     private static final double EDGE_LENGTH = 4.0;
@@ -37,10 +43,17 @@ public class ClientMandelbrotSet extends Client<Integer[][]>
     public static void main( String[] args ) throws Exception
     {  
         System.setSecurityManager( new SecurityManager() );
+        
         final ClientMandelbrotSet client = new ClientMandelbrotSet();
         client.begin();
+
+
         Integer[][] value = client.runTask();
-        client.add( client.getLabel( value ) );
+
+        if(value != null)
+            client.add( client.getLabel( value ) );
+
+
         client.end();
     }
     

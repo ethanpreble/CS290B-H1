@@ -9,9 +9,10 @@ package tasks;
 import api.Task;
 import java.io.Serializable;
 
-public class TaskMandelbrotSet implements Task, Serializable
+public class TaskMandelbrotSet implements Task<Integer[][]>, Serializable
 {
 
+    private static final long serialVersionUID = 229L;
 
     private final double _lower_left_x;
     private final double _lower_left_y;
@@ -38,12 +39,12 @@ public class TaskMandelbrotSet implements Task, Serializable
 	}
 
 
-	public Task execute()
+	public Integer[][] execute()
 	{
 		System.out.println("[TaskMandelbrotSet.execute()]");
 
-		Task anewTask = null;
-		return anewTask;
+		Integer[][] i = null;
+		return i;
 
 	}
 

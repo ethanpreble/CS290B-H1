@@ -22,6 +22,11 @@ import javax.swing.JScrollPane;
  */
 public class Client<T> extends JFrame
 {
+
+    private static final long serialVersionUID = 231L;
+
+
+
     final protected Task<T> task;
     final private Computer computer;
     protected T taskReturnValue;

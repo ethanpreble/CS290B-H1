@@ -29,24 +29,21 @@ public class ClientPi extends Client<BigDecimal>
     public static void main(String args[]) 
     {
 
-        if (System.getSecurityManager() == null) 
-        {
+        // Security Manager
+
+        if (System.getSecurityManager() == null) {
             System.setSecurityManager(new SecurityManager());
         }
 
 
         try{
 
-            /*
-            String name = "Computer";
-            Registry registry = LocateRegistry.getRegistry(args[0]);
-            Computer comp = (Computer) registry.lookup(name);
-            */
-
 
             final ClientPi client = new ClientPi(args[0], Integer.parseInt(args[1]));
+
             client.begin(); //start timer
 
+            // Compute Pi on the remote machine
             BigDecimal result_value = client.runTask();
             System.out.println(result_value);
 
