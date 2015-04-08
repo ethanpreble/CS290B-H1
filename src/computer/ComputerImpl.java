@@ -29,9 +29,9 @@ public class ComputerImpl implements Computer {
      * @param  Task<T> t
      * @return   t.execute()
      */
-    public <T> T executeTask(Task<T> t) {
+    public <T> T execute(Task<T> t) {
         
-        System.out.println("[ComputerImpl:executeTask()]");
+        System.out.println("[ComputerImpl:execute()]");
 
         return t.execute();
     }

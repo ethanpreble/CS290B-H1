@@ -38,7 +38,11 @@ public class Client<T> extends JFrame
         computer = ( domainName == null ) ? new ComputerImpl() : (Computer) Naming.lookup( url );
     }
     
-    public void begin() { clientStartTime = System.nanoTime(); }
+    public void begin() 
+    { 
+        clientStartTime = System.nanoTime(); 
+        System.out.println("Client.begin()");
+    }
     
     public void end() 
     { 
