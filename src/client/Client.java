@@ -35,6 +35,9 @@ public class Client<T> extends JFrame
         setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
         
         String url = "rmi://" + domainName + ":" + Computer.PORT + "/" + Computer.SERVICE_NAME;
+        
+        System.out.println("Client connecting to URL: " + url);
+
         computer = ( domainName == null ) ? new ComputerImpl() : (Computer) Naming.lookup( url );
     }
     

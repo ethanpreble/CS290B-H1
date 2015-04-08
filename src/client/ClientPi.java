@@ -28,15 +28,21 @@ public class ClientPi extends Client<BigDecimal>
      */
     public static void main(String args[]) 
     {
-        System.setSecurityManager(new SecurityManager());
+
+        if (System.getSecurityManager() == null) 
+        {
+            System.setSecurityManager(new SecurityManager());
+        }
+
 
         try{
-/*
+
+            /*
             String name = "Computer";
             Registry registry = LocateRegistry.getRegistry(args[0]);
             Computer comp = (Computer) registry.lookup(name);
+            */
 
-*/
 
             final ClientPi client = new ClientPi(args[0], Integer.parseInt(args[1]));
             client.begin(); //start timer
