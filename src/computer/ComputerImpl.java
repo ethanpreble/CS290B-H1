@@ -51,8 +51,9 @@ public class ComputerImpl implements Computer {
             String name = "Computer";
             Computer computeImpl = new ComputerImpl();
             Computer stub = (Computer) UnicastRemoteObject.exportObject(computeImpl, 0);
-            Registry registry = LocateRegistry.getRegistry();
-            registry.rebind(name, stub);
+            //Registry registry = LocateRegistry.getRegistry();
+            Registry registry = LocateRegistry.createRegistry(1099);
+			registry.rebind(name, stub);
             System.out.println("ComputeImpl bound");
         } catch (Exception e) {
             System.err.println("ComputeImpl exception:");
