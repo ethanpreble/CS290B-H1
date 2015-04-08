@@ -30,6 +30,9 @@ public class ComputerImpl implements Computer {
      * @return   t.execute()
      */
     public <T> T executeTask(Task<T> t) {
+        
+        System.out.println("[ComputerImpl:executeTask()]");
+
         return t.execute();
     }
 
@@ -38,7 +41,9 @@ public class ComputerImpl implements Computer {
      * main()
      * @param args
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) 
+    {
+
         if (System.getSecurityManager() == null) {
             System.setSecurityManager(new SecurityManager());
         }

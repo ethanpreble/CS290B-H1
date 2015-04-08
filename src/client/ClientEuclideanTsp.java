@@ -1,4 +1,4 @@
-package clients;
+package client;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -34,10 +34,20 @@ public class ClientEuclideanTsp extends Client<List<Integer>>
         { 6, 6 }
     };
     
+
+    /**
+     * ClientEuclideanTsp constructor. Set destination hostname here.
+     * @throws RemoteException       [description]
+     * @throws NotBoundException     [description]
+     * @throws MalformedURLException [description]
+     */
     public ClientEuclideanTsp() throws RemoteException, NotBoundException, MalformedURLException
     { 
         super( "Euclidean TSP", "localhost", new TaskEuclideanTsp( CITIES ) ); 
     }
+
+
+
     
     public static void main( String[] args ) throws Exception
     {
