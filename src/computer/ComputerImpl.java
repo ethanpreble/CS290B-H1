@@ -14,12 +14,12 @@ import api.Task;
 /**
  * ComputeImpl Class
  */
-public class ComputeImpl implements Computer {
+public class ComputerImpl implements Computer {
 
 	/**
 	 * ComputeImpl Constructor
 	 */
-    public ComputeImpl() {
+    public ComputerImpl() {
         super();
     }
 
@@ -44,7 +44,7 @@ public class ComputeImpl implements Computer {
         }
         try {
             String name = "Computer";
-            Computer computeImpl = new ComputeImpl();
+            Computer computeImpl = new ComputerImpl();
             Computer stub = (Computer) UnicastRemoteObject.exportObject(computeImpl, 0);
             Registry registry = LocateRegistry.getRegistry();
             registry.rebind(name, stub);

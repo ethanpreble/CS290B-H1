@@ -22,9 +22,9 @@ import javax.swing.JScrollPane;
 public class Client<T> extends JFrame
 {
     final protected Task<T> task;
-          final private Computer computer;
-                protected T taskReturnValue;
-                private long clientStartTime;
+    final private Computer computer;
+    protected T taskReturnValue;
+    private long clientStartTime;
     
     public Client( final String title, final String domainName, final Task<T> task ) 
             throws RemoteException, NotBoundException, MalformedURLException
