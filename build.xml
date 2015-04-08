@@ -25,11 +25,7 @@
     <mkdir dir="${dist}"/>
 
     <!-- Make computer jar file -->
-    <jar jarfile="${dist}/computer.jar" basedir="${build}" includes="computer/** api/**">
-		<manifest>
-			<attribute name="Main-Class" value="computer.ComputerImpl"/>
-		</manifest>
-	</jar>
+    <jar jarfile="${dist}/computer.jar" basedir="${build}" includes="computer/** api/**"/>
     
     <!-- Make client jar file -->
     <jar jarfile="${dist}/client.jar" basedir="${build}" includes="client/** api/** tasks/**"/>
