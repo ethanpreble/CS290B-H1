@@ -1,4 +1,5 @@
-package clients;
+package client;
+
 import api.Computer;
 import api.Task;
 import computer.ComputerImpl;
