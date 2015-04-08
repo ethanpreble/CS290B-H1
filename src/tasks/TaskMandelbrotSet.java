@@ -57,6 +57,12 @@ public class TaskMandelbrotSet implements Task<Integer[][]>, Serializable
 			_real = Math.pow(prevReal,2)-Math.pow(prevImaginary,2);
 			_imaginary = 2*prevReal*prevImaginary;
 		}
+		
+		public void add(Complex a)
+		{
+			_real = _real+a._real;
+			_imaginary = _imaginary+a._imaginary;
+		}
 	}
 
 
@@ -78,7 +84,8 @@ public class TaskMandelbrotSet implements Task<Integer[][]>, Serializable
 				while(	(iterations <= _iteration_limit) && (distance(zk._real,zk._imaginary) <2)	)
 				{
 					//find new zk
-					 
+					zk.square();
+					zk.add(c);
 					iterations++;
 				}
 				result[i][j] = iterations;
