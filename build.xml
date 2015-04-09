@@ -8,9 +8,9 @@
   <property name="library"  location="library"/>
   
   <!-- codebase properties -->
-  <property name="computer_file_codebase" location="/cs/faculty/cappello/public_html/cs290b/hw1/computer/" />
+  <property name="computer_file_codebase" location="src/system/" />
   <property name="computer_web_codebase" value="http://www.cs.ucsb.edu/~cappello/cs290b/hw1/computer/" />  
-  <property name="client_file_codebase" location="/cs/faculty/cappello/public_html/cs290b/hw1/client/" />
+  <property name="client_file_codebase" location="src/client/" />
   <property name="client_web_codebase" value="http://www.cs.ucsb.edu/~cappello/cs290b/hw1/client/" />
 
   <target name="compile" description="compile the source">
