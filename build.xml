@@ -86,15 +86,10 @@
   
   <target name="runEClient" description="run client" >
   	<java classname="client.ClientEuclideanTsp" fork="true">
-<<<<<<< HEAD
       <!--
   	  <jvmarg value="-Djava.rmi.server.codebase=${client_web_codebase}"/>
   	  -->
       <jvmarg value="-Djava.security.policy=policy.txt"/>
-=======
-  	  <jvmarg value="-Djava.rmi.server.codebase=file://C:/Users/ethan_000/AndroidStudioProjects/CS290B-H1/dist/client.jar"/>
-  	  <jvmarg value="-Djava.security.policy=policy.txt"/>
->>>>>>> master
   	  <arg value="localhost"/>
       
   	  <classpath>

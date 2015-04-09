@@ -18,6 +18,10 @@ class City implements Serializable
 
 }
 
+/**
+ * Task class to ascertain the shortest route between cities passed 
+ * as Euclidean coordinates to the constructor.
+ */
 public class TaskEuclideanTsp implements Task<List<Integer>>, Serializable
 {
 
@@ -25,10 +29,14 @@ public class TaskEuclideanTsp implements Task<List<Integer>>, Serializable
 
     //private Double[][] _cities;
     private List<Double[]> _cities;
-
     private ArrayList<City> _city_list = new ArrayList<City>();
 
 
+    /**
+     * Constructor. Takes a double array of doubles. The first dimension refers to a list of cities. 
+     * The second dimension holds the x and y coordinates of the city.
+     * @param  cities double[][]
+     */
 	public TaskEuclideanTsp(Double[][] cities)
 	{
 		_cities = java.util.Arrays.asList(cities);
@@ -45,6 +53,11 @@ public class TaskEuclideanTsp implements Task<List<Integer>>, Serializable
 	}
 
 
+
+	/**
+	 * Executes this task. Fulfills the task interface. Server will call this function and execute server-side.
+	 * @return List of Integers of the indices of the cities after they're sorted for the shortest route.
+	 */
 	public List<Integer> execute()
 	{
 
@@ -146,25 +159,3 @@ public class TaskEuclideanTsp implements Task<List<Integer>>, Serializable
 	}
 }
 
-
-/*
-
-
-
-
-For the EuclideanTspTask, use the following list of cities as a problem instance: Each line that follows has the x and y coordinates of a city, starting with city 0 and ending with city 9:
-
-6 3
-2 2
-5 8
-1 5
-1 6
-2 7
-2 8
-6 5
-1 3
-6 6
-
-
-
- */
