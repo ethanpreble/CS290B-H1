@@ -35,8 +35,9 @@
     <jar jarfile="${dist}/computer.jar" basedir="${build}" includes="computer/** api/**"/>
     
     <!-- Make client jar file -->
-    <jar jarfile="${dist}/client.jar" basedir="${build}" includes="client/** api/** tasks/**"/>
-    
+    <jar jarfile="${dist}/client.jar" basedir="${build}" includes="client/** api/** tasks/**">
+		<zipgroupfileset dir="${library}" includes="**/*.jar"/>
+	</jar>
     <!-- Copy client's task classes to client's codebase --> 
     <mkdir dir="${client_file_codebase}/tasks"/>
     <copy todir="${client_file_codebase}/tasks">
