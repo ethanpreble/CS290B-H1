@@ -16,5 +16,6 @@ To Run:
 > ant runEClient (or runMClient, run on client machine)  
   
 To cause the client to connect to a server other than 'localhost', modify 'build.xml' in the lines that look like  
-> <arg value="localhost"/>  
+> "<arg value="localhost"/>"
+  
 Put the IP address of the server in place of 'localhost'.
