@@ -63,6 +63,11 @@ public class TaskMandelbrotSet implements Task<Integer[][]>, Serializable
 	public Integer[][] execute()
 	{
 		System.out.println("[TaskMandelbrotSet.execute()]");
+		System.out.println("llx:"+_lower_left_x);
+		System.out.println("lly:"+_lower_left_y);
+		System.out.println("edge:"+_edge_length);
+		System.out.println("n_pixels:"+_n_pixels);
+		System.out.println("iteration:"+_iteration_limit);
 
 		Integer[][] result = new Integer[_n_pixels][_n_pixels];
 		for(int i=0; i<_n_pixels; i++){
@@ -73,7 +78,7 @@ public class TaskMandelbrotSet implements Task<Integer[][]>, Serializable
 				double offset_y = j*(_edge_length/_n_pixels);
 				Complex c = new Complex(_lower_left_x + offset_x, _lower_left_y + offset_y);
 				Complex zk = new Complex(_lower_left_x + offset_x, _lower_left_y + offset_y); //didn't want to deal with deep copy stuff but this is same a 'c'
-				
+								
 				int iterations=0;
 				while(	(iterations <= _iteration_limit) && (distance(zk._real,zk._imaginary) <2)	)
 				{
@@ -85,11 +90,9 @@ public class TaskMandelbrotSet implements Task<Integer[][]>, Serializable
 				result[i][j] = iterations;
 			}
 		}
-		System.out.println("[TaskMandelbrotSet.finised()]");
+		System.out.println("[TaskMandelbrotSet.finished()]");
+		
 		return result;
-		
-		
-
 	}
 
 	/*

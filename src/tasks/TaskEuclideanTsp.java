@@ -87,7 +87,7 @@ public class TaskEuclideanTsp implements Task<List<Integer>>, Serializable
 			if((shortest_len == null) || (len < shortest_len) ){
 				shortest_len = len;
 				shortest_permutation = route_permutation;
-				System.out.println("[TaskEuclideanTsp.findShortestRoute] New shortest: " + shortest_len);
+			//	System.out.println("[TaskEuclideanTsp.findShortestRoute] New shortest: " + shortest_len);
 			}
 		}
 		System.out.println("[TaskEuclideanTsp.findShortestRoute] Shortest len: " + shortest_len);

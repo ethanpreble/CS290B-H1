@@ -8,9 +8,9 @@
   <property name="library"  location="library"/>
   
   <!-- codebase properties -->
-  <property name="computer_file_codebase" location="src/system/" />
+  <property name="computer_file_codebase" location="build/system/" />
   <property name="computer_web_codebase" value="http://www.cs.ucsb.edu/~cappello/cs290b/hw1/computer/" />  
-  <property name="client_file_codebase" location="src/client/" />
+  <property name="client_file_codebase" location="build/client/" />
   <property name="client_web_codebase" value="http://www.cs.ucsb.edu/~cappello/cs290b/hw1/client/" />
 
   <target name="compile" description="compile the source">
@@ -33,8 +33,14 @@
 
     <!-- Make computer jar file -->
     <jar jarfile="${dist}/computer.jar" basedir="${build}" includes="system/** api/** tasks/**">
+<<<<<<< HEAD
       <zipgroupfileset dir="${library}" includes="**/*.jar"/>
     </jar>    
+=======
+		<zipgroupfileset dir="${library}" includes="**/*.jar"/>
+	</jar>
+    
+>>>>>>> master
     <!-- Make client jar file -->
     <jar jarfile="${dist}/client.jar" basedir="${build}" includes="client/** api/** tasks/**">
 		  <zipgroupfileset dir="${library}" includes="**/*.jar"/>
@@ -52,10 +58,9 @@
   
   <target name="runComputer" description="run computer" >
   	<java classname="system.ComputerImpl" fork="true">
-      <!--
-  	  <jvmarg value="-Djava.rmi.server.codebase=file://C:/cs/faculty/cappello/public_html/cs290b/hw1/client/tasks/"/>
-  	  
-      -->
+   
+  	  <jvmarg value="-Djava.rmi.server.codebase=file://C:/Users/ethan_000/AndroidStudioProjects/CS290B-H1/dist/client.jar"/>
+      
       <jvmarg value="-Djava.security.policy=policy.txt"/>
   	  <classpath>
   	    <pathelement location="dist/computer.jar"/>
@@ -78,7 +83,7 @@
   	<java classname="client.ClientMandelbrotSet" fork="true">
   	  <jvmarg value="-Djava.rmi.server.codebase=${client_web_codebase}"/>
   	  <jvmarg value="-Djava.security.policy=policy.txt"/>
-  	  <arg value="localhost"/>
+  	  <arg value="128.111.43.14"/>
   	  <classpath>
   	    <pathelement location="dist/client.jar"/>
   	  </classpath>
@@ -87,11 +92,17 @@
   
   <target name="runEClient" description="run client" >
   	<java classname="client.ClientEuclideanTsp" fork="true">
+<<<<<<< HEAD
       <!--
   	  <jvmarg value="-Djava.rmi.server.codebase=${client_web_codebase}"/>
   	  -->
       <jvmarg value="-Djava.security.policy=policy.txt"/>
+=======
+  	  <jvmarg value="-Djava.rmi.server.codebase=file://C:/Users/ethan_000/AndroidStudioProjects/CS290B-H1/dist/client.jar"/>
+  	  <jvmarg value="-Djava.security.policy=policy.txt"/>
+>>>>>>> master
   	  <arg value="localhost"/>
+      
   	  <classpath>
   	    <pathelement location="dist/client.jar"/>
   	  </classpath>
