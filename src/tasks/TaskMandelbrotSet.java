@@ -1,9 +1,3 @@
-/*
-	new TaskMandelbrotSet( LOWER_LEFT_X, LOWER_LEFT_Y, EDGE_LENGTH, N_PIXELS, ITERATION_LIMIT) );
-
-
-*/
-
 package tasks;
 
 import api.Task;
