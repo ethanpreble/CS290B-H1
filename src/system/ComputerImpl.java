@@ -1,5 +1,5 @@
 
-package computer;			// computer = "engine" in tutorial https://docs.oracle.com/javase/tutorial/rmi/implementing.html
+package system;			// computer = "engine" in tutorial https://docs.oracle.com/javase/tutorial/rmi/implementing.html
 
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;

@@ -1,1 +1,1 @@
-java -Djava.security.policy=policy.txt -cp ".:../library/combinatoricslib-2.1.jar" computer.ComputerImpl
+java -Djava.security.policy=policy.txt -cp ".:../library/combinatoricslib-2.1.jar" system.ComputerImpl
