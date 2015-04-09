@@ -32,12 +32,13 @@
     <mkdir dir="${dist}"/>
 
     <!-- Make computer jar file -->
-    <jar jarfile="${dist}/computer.jar" basedir="${build}" includes="src/system/** api/**"/>
-    
+    <jar jarfile="${dist}/computer.jar" basedir="${build}" includes="system/** api/** tasks/**">
+      <zipgroupfileset dir="${library}" includes="**/*.jar"/>
+    </jar>    
     <!-- Make client jar file -->
     <jar jarfile="${dist}/client.jar" basedir="${build}" includes="client/** api/** tasks/**">
-		<zipgroupfileset dir="${library}" includes="**/*.jar"/>
-	</jar>
+		  <zipgroupfileset dir="${library}" includes="**/*.jar"/>
+	 </jar>
     <!-- Copy client's task classes to client's codebase --> 
     <mkdir dir="${client_file_codebase}/tasks"/>
     <copy todir="${client_file_codebase}/tasks">
@@ -86,8 +87,10 @@
   
   <target name="runEClient" description="run client" >
   	<java classname="client.ClientEuclideanTsp" fork="true">
+      <!--
   	  <jvmarg value="-Djava.rmi.server.codebase=${client_web_codebase}"/>
-  	  <jvmarg value="-Djava.security.policy=policy.txt"/>
+  	  -->
+      <jvmarg value="-Djava.security.policy=policy.txt"/>
   	  <arg value="localhost"/>
   	  <classpath>
   	    <pathelement location="dist/client.jar"/>
