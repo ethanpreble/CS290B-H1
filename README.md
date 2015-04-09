@@ -13,5 +13,5 @@ To Build:
   
 To Run:  
 > ant runComputer  (on server machine)  
-> ant runEClient [or runMClient] (on client machine)  
+> ant runEClient (or runMClient, run on client machine)  
 
