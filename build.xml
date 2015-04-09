@@ -32,7 +32,7 @@
     <mkdir dir="${dist}"/>
 
     <!-- Make computer jar file -->
-    <jar jarfile="${dist}/computer.jar" basedir="${build}" includes="src/system/** api/**"/>
+    <jar jarfile="${dist}/computer.jar" basedir="${build}" includes="system/** api/**"/>
     
     <!-- Make client jar file -->
     <jar jarfile="${dist}/client.jar" basedir="${build}" includes="client/** api/** tasks/**">
