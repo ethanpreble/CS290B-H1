@@ -1,0 +1,1 @@
+java -Djava.security.policy=policy.txt -classpath ".:../library/combinatoricslib-2.1.jar" client/ClientEuclideanTsp localhost
