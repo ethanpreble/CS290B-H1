@@ -84,6 +84,11 @@ public class ClientMandelbrotSet extends Client<Integer[][]>
     
     private Color getColor( int iterationCount )
     {
-        return iterationCount == ITERATION_LIMIT ? Color.BLACK : Color.WHITE;
+		if(iterationCount == ITERATION_LIMIT) return Color.BLACK;
+        else if(iterationCount > 3*ITERATION_LIMIT/4) return Color.GRAY;
+		else if(iterationCount > ITERATION_LIMIT/2) return Color.LIGHT_GRAY;
+		else return Color.WHITE;
+		
+		//return iterationCount == ITERATION_LIMIT ? Color.BLACK : Color.WHITE;
     }
 }
