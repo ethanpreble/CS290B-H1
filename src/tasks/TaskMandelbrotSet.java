@@ -85,7 +85,7 @@ public class TaskMandelbrotSet implements Task<Integer[][]>, Serializable
 				result[i][j] = iterations;
 			}
 		}
-		
+		System.out.println("[TaskMandelbrotSet.finised()]");
 		return result;
 		
 		
