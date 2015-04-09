@@ -50,7 +50,7 @@
   
   <target name="runComputer" description="run computer" >
   	<java classname="computer.ComputerImpl" fork="true">
-  	  <jvmarg value="-Djava.rmi.server.codebase=${server_web_codebase}"/>
+  	  <jvmarg value="-Djava.rmi.server.codebase=${computer_web_codebase}"/>
   	  <jvmarg value="-Djava.security.policy=policy.txt"/>
   	  <classpath>
   	    <pathelement location="dist/computer.jar"/>
