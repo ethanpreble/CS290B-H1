@@ -78,7 +78,7 @@
   	<java classname="client.ClientMandelbrotSet" fork="true">
   	  <jvmarg value="-Djava.rmi.server.codebase=${client_web_codebase}"/>
   	  <jvmarg value="-Djava.security.policy=policy.txt"/>
-  	  <arg value="localhost"/>
+  	  <arg value="128.111.43.14"/>
   	  <classpath>
   	    <pathelement location="dist/client.jar"/>
   	  </classpath>
@@ -90,6 +90,7 @@
   	  <jvmarg value="-Djava.rmi.server.codebase=file://C:/Users/ethan_000/AndroidStudioProjects/CS290B-H1/dist/client.jar"/>
   	  <jvmarg value="-Djava.security.policy=policy.txt"/>
   	  <arg value="localhost"/>
+      
   	  <classpath>
   	    <pathelement location="dist/client.jar"/>
   	  </classpath>
