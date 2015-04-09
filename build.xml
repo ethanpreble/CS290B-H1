@@ -32,7 +32,7 @@
     <mkdir dir="${dist}"/>
 
     <!-- Make computer jar file -->
-    <jar jarfile="${dist}/computer.jar" basedir="${build}" includes="computer/** api/**"/>
+    <jar jarfile="${dist}/computer.jar" basedir="${build}" includes="src/system/** api/**"/>
     
     <!-- Make client jar file -->
     <jar jarfile="${dist}/client.jar" basedir="${build}" includes="client/** api/** tasks/**">
@@ -50,9 +50,12 @@
   </target>
   
   <target name="runComputer" description="run computer" >
-  	<java classname="computer.ComputerImpl" fork="true">
+  	<java classname="system.ComputerImpl" fork="true">
+      <!--
   	  <jvmarg value="-Djava.rmi.server.codebase=file://C:/cs/faculty/cappello/public_html/cs290b/hw1/client/tasks/"/>
-  	  <jvmarg value="-Djava.security.policy=policy.txt"/>
+  	  
+      -->
+      <jvmarg value="-Djava.security.policy=policy.txt"/>
   	  <classpath>
   	    <pathelement location="dist/computer.jar"/>
   	  </classpath>
