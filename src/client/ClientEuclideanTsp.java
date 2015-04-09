@@ -56,8 +56,12 @@ public class ClientEuclideanTsp extends Client<List<Integer>>
     public static void main( String[] args ) throws Exception
     {
         System.setSecurityManager( new SecurityManager() );
+        
+
         final ClientEuclideanTsp client = new ClientEuclideanTsp(args[0]);  //pass hostnmae
         client.begin();
+
+
 
 
         final List<Integer> result = client.runTask();
