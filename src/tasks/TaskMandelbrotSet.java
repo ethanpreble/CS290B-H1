@@ -4,7 +4,13 @@ import api.Task;
 import java.io.Serializable;
 import java.lang.Math;
 
-
+/**
+* This is a class that implements the Task.java interface so that it may be run by classes that implement the Computer interface.  
+* The TaskMandelBrotSet takes in parameters that specify a square in the complex bumber plane.
+* It will return a 2x2 matrix representing the iteration limits for the mandelbrot set in order to aid with visualization.  For more information see execute()
+* @author  EthanPreble & GregParsons
+* @see http://www.cs.ucsb.edu/~cappello/290B/homework/1/
+*/
 public class TaskMandelbrotSet implements Task<Integer[][]>, Serializable
 {
     private static final long serialVersionUID = 229L;
@@ -15,6 +21,14 @@ public class TaskMandelbrotSet implements Task<Integer[][]>, Serializable
     private final int _n_pixels;
     private final int _iteration_limit;
 	
+	/**
+	* Constructor
+	* @param  double for lower left x square coordinate for a square in the complex plane x represents real number axis
+	* @param  double for lower left y square coordinate for a square in the complex plane y represents imaginary number axis
+	* @param  double for edge length of the square.
+	* @param  int for the number of subsquares where the square region will be divided into nXn squares where n is the parameter.
+	* @param int for the iteration limit, ie the numebr of times that the iterative calculation will be performed
+	*/
 	public TaskMandelbrotSet(double lower_left_x, double lower_left_y, double edge_length, int n_pixels, int iteration_limit)
 	{
 
@@ -59,7 +73,12 @@ public class TaskMandelbrotSet implements Task<Integer[][]>, Serializable
 		}
 	}
 
-
+	/**
+	* Execute the constructed Mandelbrot task.
+	* The execute method returns an Integer[n][n] count array, where count[i][j] = k, where |zk| > 2 or k is the iteration limit (whichever is smaller), where
+	* z0 = c, where c is the representative point in square[i][j] (typically the lower left point defining the square)
+	* zk = (zk-1)2 + c.
+	*/
 	public Integer[][] execute()
 	{
 		System.out.println("[TaskMandelbrotSet.execute()]");
@@ -95,17 +114,6 @@ public class TaskMandelbrotSet implements Task<Integer[][]>, Serializable
 		return result;
 	}
 
-	/*
-	This task helps produce a visualization of the some part of the Mandelbrot set.
-	The constructor takes the following inputs:
-	2 doubles that represent the lower left corner of a square in the complex plane.
-	a double that represents the edge length of a square in the complex plane, whose sides are parallel to the axes.
-	an int , n, such that the square region of the complex plane is subdivided into n X n squares, each of which is visualized by 1 pixel.
-	an int which is the iteration limit: It defines when the representative point of a region is considered to be in the Mandelbrot set.
-	The execute method returns an Integer[n][n] count array, where count[i][j] = k, where |zk| > 2 or k is the iteration limit (whichever is smaller), where
-	z0 = c, where c is the representative point in square[i][j] (typically the lower left point defining the square)
-	zk = (zk-1)2 + c.
-	Your client maps each element of the count array (i.e., elements in the set {0, 1, 2, ..., iterationLimit }) to a Color object, and displays the n X n array of colors, 1 pixel per Color.
-*/
+	
 	
 }
