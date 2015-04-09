@@ -40,7 +40,7 @@ public class ClientEuclideanTsp extends Client<List<Integer>>
     
 
     /**
-     * ClientEuclideanTsp constructor. Set destination hostname here.
+     * Constructor. Assign destination hostname here.
      * @throws RemoteException       [description]
      * @throws NotBoundException     [description]
      * @throws MalformedURLException [description]
@@ -52,7 +52,11 @@ public class ClientEuclideanTsp extends Client<List<Integer>>
 
 
 
-    
+    /**
+     * Start client-side execution.
+     * @param  args      [hostname]
+     * @throws Exception 
+     */
     public static void main( String[] args ) throws Exception
     {
         System.setSecurityManager( new SecurityManager() );
@@ -62,26 +66,23 @@ public class ClientEuclideanTsp extends Client<List<Integer>>
         client.begin();
 
 
-
-
         final List<Integer> shortest_route = client.runTask();
         if(shortest_route.isEmpty()){
             // Error
             return;
         }
-
-            // final List<Integer> value = client.runTask();
             
         client.add( client.getLabel(shortest_route.toArray( new Integer[0] ) ) );
-
-
-
         client.end();
     }
     
 
 
-
+    /**
+     * Displays cities and shortest route.
+     * @param  tour [Array of Integers as the order of cities to make the shortest route]
+     * @return      [JLabel]
+     */
     public JLabel getLabel( final Integer[] tour )
     {
         Logger.getLogger( ClientEuclideanTsp.class.getCanonicalName() ).log(Level.INFO, tourToString( tour ) );

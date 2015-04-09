@@ -33,14 +33,8 @@
 
     <!-- Make computer jar file -->
     <jar jarfile="${dist}/computer.jar" basedir="${build}" includes="system/** api/** tasks/**">
-<<<<<<< HEAD
       <zipgroupfileset dir="${library}" includes="**/*.jar"/>
     </jar>    
-=======
-		<zipgroupfileset dir="${library}" includes="**/*.jar"/>
-	</jar>
-    
->>>>>>> master
     <!-- Make client jar file -->
     <jar jarfile="${dist}/client.jar" basedir="${build}" includes="client/** api/** tasks/**">
 		  <zipgroupfileset dir="${library}" includes="**/*.jar"/>
