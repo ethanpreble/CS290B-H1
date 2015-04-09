@@ -18,7 +18,7 @@ import tasks.TaskEuclideanTsp;
  *
  * @author Peter Cappello
  */
-public class ClientEuclideanTsp extends Client<List<Double[]>>
+public class ClientEuclideanTsp extends Client<List<Integer>>
 {
 
     //Test Data
@@ -64,23 +64,25 @@ public class ClientEuclideanTsp extends Client<List<Double[]>>
 
 
 
-        final List<Double[]> result = client.runTask();
-        if(result.isEmpty()){
+        final List<Integer> shortest_route = client.runTask();
+        if(shortest_route.isEmpty()){
+            // Error
             return;
         }
 
             // final List<Integer> value = client.runTask();
             
-            // client.add( client.getLabel( value.toArray( new Integer[0] ) ) );
+        client.add( client.getLabel(shortest_route.toArray( new Integer[0] ) ) );
 
-            Integer[] resultArray = result.toArray(new Integer[result.size()]);
 
-//            client.add(client.getLabel(result.toArray(new Double[0])));
 
         client.end();
     }
     
-    public JLabel getLabel( final Double[] tour )
+
+
+
+    public JLabel getLabel( final Integer[] tour )
     {
         Logger.getLogger( ClientEuclideanTsp.class.getCanonicalName() ).log(Level.INFO, tourToString( tour ) );
 
@@ -114,22 +116,23 @@ public class ClientEuclideanTsp extends Client<List<Double[]>>
 
         final int margin = 10;
         final int field = NUM_PIXALS - 2*margin;
+        
         // draw edges
         graphics.setColor( Color.BLUE );
         int x1, y1, x2, y2;
-        int city1 = tour[0].intValue(), city2;
+        int city1 = tour[0], city2;
         x1 = margin + (int) ( scaledCities[city1][0]*field );
         y1 = margin + (int) ( scaledCities[city1][1]*field );
         for ( int i = 1; i < CITIES.length; i++ )
         {
-            city2 = tour[i].intValue();
+            city2 = tour[i];
             x2 = margin + (int) ( scaledCities[city2][0]*field );
             y2 = margin + (int) ( scaledCities[city2][1]*field );
             graphics.drawLine( x1, y1, x2, y2 );
             x1 = x2;
             y1 = y2;
         }
-        city2 = tour[0].intValue();
+        city2 = tour[0];
         x2 = margin + (int) ( scaledCities[city2][0]*field );
         y2 = margin + (int) ( scaledCities[city2][1]*field );
         graphics.drawLine( x1, y1, x2, y2 );
@@ -149,11 +152,11 @@ public class ClientEuclideanTsp extends Client<List<Double[]>>
         return new JLabel( imageIcon );
     }
     
-    private String tourToString( Double[] cities )
+    private String tourToString( Integer[] cities )
     {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append( "Tour: " );
-        for ( Double city : cities )
+        for ( Integer city : cities )
         {
             stringBuilder.append( city ).append( ' ' );
         }

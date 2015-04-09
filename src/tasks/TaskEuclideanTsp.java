@@ -3,53 +3,85 @@ package tasks;
 
 import api.Task;
 import java.io.Serializable;
+import java.util.List;
+import java.util.ArrayList;
 import org.paukov.combinatorics.*;
 
+class City implements Serializable
+{
+	public Integer index;			// 
+	public Double[] coords;	// coordinate
 
-public class TaskEuclideanTsp implements Task<java.util.List<Double[]>>, Serializable
+	public City(Integer idx, Double[] coordinates){
+		index = idx;
+		coords = coordinates;
+	}
+
+}
+
+public class TaskEuclideanTsp implements Task<List<Integer>>, Serializable
 {
 
     private static final long serialVersionUID = 235L;
 
     //private Double[][] _cities;
-    private java.util.List<Double[]> _cities;
+    private List<Double[]> _cities;
+
+    private ArrayList<City> _city_list = new ArrayList<City>();
 
 
 	public TaskEuclideanTsp(Double[][] cities)
 	{
- 		
 		_cities = java.util.Arrays.asList(cities);
 
-		System.out.println("[TaskEuclideanTsp constructor()] " + _cities.size() + " cities");
+		java.util.Iterator city_iter = _cities.iterator();
+		for(int i=0; i<_cities.size(); i++){
+			if(city_iter.hasNext()){
+				City newCity = new City(i, (Double[]) city_iter.next());
+				_city_list.add(newCity);
+			}
+		}
 
+		System.out.println("[TaskEuclideanTsp constructor()] " + _city_list.size() + " in city list");
 	}
 
 
-	public java.util.List<Double[]> execute()
+	public List<Integer> execute()
 	{
+
+		printCities();
+
 		System.out.println("[TaskEuclideanTsp.execute()] " + _cities.size() + " cities");
- 		ICombinatoricsVector<Double[]> initialVector = Factory.createVector(_cities);
-		Generator<Double[]> generator = Factory.createPermutationGenerator(initialVector);
+ 		ICombinatoricsVector<City> initialVector = Factory.createVector(_city_list);
+		Generator<City> generator = Factory.createPermutationGenerator(initialVector);
 		
 		// Find shortest
-		ICombinatoricsVector<Double[]> shortest_permutation = findShortestRoute(generator);
-		java.util.List<Double[]> result = shortest_permutation.getVector();
-		return result;
+		ICombinatoricsVector<City> shortest_permutation = findShortestRoute(generator);
+		
+		List<Integer> route_list = new ArrayList<Integer>();
 
+		for(City city : shortest_permutation){
+			route_list.add(city.index);
+		}
+
+		// See the shortest TSP
+		//for(Integer city:route_list)
+		//	System.out.println(city);
+		
+		return route_list;
 	}
 
 
 
 
 
-	private ICombinatoricsVector<Double[]> findShortestRoute(Generator<Double[]> generator_all_routes)
+	private ICombinatoricsVector<City> findShortestRoute(Generator<City> generator_all_routes)
 	{
-		ICombinatoricsVector<Double[]> shortest_permutation = null;
+		ICombinatoricsVector<City> shortest_permutation = null;
 		Double shortest_len = null;
 
-		for(ICombinatoricsVector<Double[]> route_permutation:generator_all_routes){
-
-			// System.out.println(count + ": hello");//combination[0] + " " + combination[1]);
+		for(ICombinatoricsVector<City> route_permutation:generator_all_routes){
+			//System.out.println("hello");//combination[0] + " " + combination[1]);
 			double len = getRouteLength(route_permutation);
 
 			// Set a new shortest length if this is the first or if it's shorter than the previous record.			
@@ -59,7 +91,6 @@ public class TaskEuclideanTsp implements Task<java.util.List<Double[]>>, Seriali
 				System.out.println("[TaskEuclideanTsp.findShortestRoute] New shortest: " + shortest_len);
 			}
 		}
-
 		System.out.println("[TaskEuclideanTsp.findShortestRoute] Shortest len: " + shortest_len);
 
 		return shortest_permutation;
@@ -68,7 +99,7 @@ public class TaskEuclideanTsp implements Task<java.util.List<Double[]>>, Seriali
 
 
 
-	private double getRouteLength(ICombinatoricsVector<Double[]> route){
+	private double getRouteLength(ICombinatoricsVector<City> route){
 
 		double total_dist = 0.0;
 		double edge_dist = 0.0;
@@ -76,38 +107,44 @@ public class TaskEuclideanTsp implements Task<java.util.List<Double[]>>, Seriali
 		java.util.Iterator routeItr = route.iterator();
 
 		// Save the first city to link with the last.
-		Double[] first_city_coord = (Double[])routeItr.next();
+		//City first_city = ;
+		Double[] first_city_coord = ((City)routeItr.next()).coords;
 
 		// Iterate through city pairs
 		Double[] current_city_coord = first_city_coord;
 		while(routeItr.hasNext()){
 
-				Double[] next_city_coord = (Double[])routeItr.next();
-				edge_dist = getDistanceBetween(current_city_coord[0], current_city_coord[1], next_city_coord[0], next_city_coord[1]);
-				total_dist += edge_dist;
+			Double[] next_city_coord = ((City)routeItr.next()).coords;
+			edge_dist = getDistanceBetween(current_city_coord[0], current_city_coord[1], next_city_coord[0], next_city_coord[1]);
+			total_dist += edge_dist;
 
-				// set current to next before next round
-				current_city_coord = next_city_coord;
+			// set current to next before next round
+			current_city_coord = next_city_coord;
 
 		}
 
 		//Get the distance between the last city and the first to close the loop.
 		edge_dist = getDistanceBetween(current_city_coord[0], current_city_coord[1], first_city_coord[0], first_city_coord[1]);
 		total_dist += edge_dist;
-
-		// System.out.println("[TaskEuclideanTsp.getRouteLength] route nodes: " + route.getSize() + ", route length: " + total_dist);
+		//System.out.println("[TaskEuclideanTsp.getRouteLength] route nodes: " + route.getSize() + ", route length: " + total_dist);
 
 		return total_dist;
 	}
 
 
 	private double getDistanceBetween(double ax, double ay, double bx, double by){
-
 		return java.lang.Math.sqrt( java.lang.Math.pow((ax - bx),2.0) + java.lang.Math.pow((ay - by), 2.0));
-
 	}
 
 
+	void printCities(){
+		System.out.println("Printing " + _city_list.size() + " cities:");
+
+		for(City city:_city_list){
+			System.out.println(city.index + " (" + city.coords[0] + ", " + city.coords[1] + ")"); 
+
+		}
+	}
 }
 
 
