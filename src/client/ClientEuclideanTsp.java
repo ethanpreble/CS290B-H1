@@ -24,18 +24,18 @@ public class ClientEuclideanTsp extends Client<List<Integer>>
     //Test Data
 
     private static final int NUM_PIXALS = 600;
-    private static final double[][] CITIES = 
+    private static final Double[][] CITIES = 
     {
-        { 6, 3 },
-        { 2, 2 },
-        { 5, 8 },
-        { 1, 5 },
-        { 1, 6 },
-        { 2, 7 },
-        { 2, 8 },
-        { 6, 5 },
-        { 1, 3 },
-        { 6, 6 }
+        { 6.0, 3.0 },
+        { 2.0, 2.0 },
+        { 5.0, 8.0 },
+        { 1.0, 5.0 },
+        { 1.0, 6.0 },
+        { 2.0, 7.0 },
+        { 2.0, 8.0 },
+        { 6.0, 5.0 },
+        { 1.0, 3.0 },
+        { 6.0, 6.0 }
     };
     
 
@@ -56,27 +56,32 @@ public class ClientEuclideanTsp extends Client<List<Integer>>
     public static void main( String[] args ) throws Exception
     {
         System.setSecurityManager( new SecurityManager() );
+        
+
         final ClientEuclideanTsp client = new ClientEuclideanTsp(args[0]);  //pass hostnmae
         client.begin();
 
 
-        final List<Integer> result = client.runTask();
-        if(result != null){
 
 
-
-
-
+        final List<Integer> shortest_route = client.runTask();
+        if(shortest_route.isEmpty()){
+            // Error
+            return;
+        }
 
             // final List<Integer> value = client.runTask();
             
+        client.add( client.getLabel(shortest_route.toArray( new Integer[0] ) ) );
 
-            // client.add( client.getLabel( value.toArray( new Integer[0] ) ) );
 
-        }
+
         client.end();
     }
     
+
+
+
     public JLabel getLabel( final Integer[] tour )
     {
         Logger.getLogger( ClientEuclideanTsp.class.getCanonicalName() ).log(Level.INFO, tourToString( tour ) );
@@ -85,7 +90,7 @@ public class ClientEuclideanTsp extends Client<List<Integer>>
         // get minX, maxX, minY, maxY, assuming they 0.0 <= mins
         double minX = CITIES[0][0], maxX = CITIES[0][0];
         double minY = CITIES[0][1], maxY = CITIES[0][1];
-        for ( double[] cities : CITIES ) 
+        for ( Double[] cities : CITIES ) 
         {
             if ( cities[0] < minX ) 
                 minX = cities[0];
@@ -111,6 +116,7 @@ public class ClientEuclideanTsp extends Client<List<Integer>>
 
         final int margin = 10;
         final int field = NUM_PIXALS - 2*margin;
+        
         // draw edges
         graphics.setColor( Color.BLUE );
         int x1, y1, x2, y2;

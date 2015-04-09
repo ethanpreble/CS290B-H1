@@ -21,12 +21,10 @@ public class ClientMandelbrotSet extends Client<Integer[][]>
     private static final long serialVersionUID = 233L;
 
 
-    //Test Data
-
     private static final double LOWER_LEFT_X = -2.0;
     private static final double LOWER_LEFT_Y = -2.0;
     private static final double EDGE_LENGTH = 4.0;
-    private static final int N_PIXELS = 256;
+    private static final int N_PIXELS = 512;
     private static final int ITERATION_LIMIT = 64;
     
 

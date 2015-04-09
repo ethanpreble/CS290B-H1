@@ -15,3 +15,15 @@ Status:
  window 2> java -Djava.security.policy=policy.txt computer.ComputerImpl  
  window 3> java -Djava.security.policy=policy.txt client.ClientMandelbrotSet localhost 
  (10 is the number of decimal places for Pi)  
+
+
+    javac -classpath ".:lib/combinatoricslib-2.1.jar" client/ClientEuclideanTsp.java  
+
+       
+client:  
+    javac -classpath ".:lib/combinatoricslib-2.1.jar" client/ClientEuclideanTsp.java -Xlint:unchecked  
+    java -Djava.security.policy=policy.txt -classpath ".:lib/combinatoricslib-2.1.jar" client/ClientEuclideanTsp localhost  
+
+
+server:  
+    java -Djava.security.policy=policy.txt -cp ".:lib/combinatoricslib-2.1.jar" computer.ComputerImpl
